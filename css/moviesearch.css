@@ -1,0 +1,19 @@
+.search-container{
+    display:flex;
+    align-items:center;
+}
+
+input[type="text"]{
+    padding:8px;
+    font-size: 16px;
+
+}
+
+button[type="submit"]{
+    padding:8px 16px;
+    background-color:lightgreen;
+    color:white;
+    border:none;
+    font-size:15px;
+    cursor:pointer;
+}
