@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/moviesearch.css">
     <link rel="shortcut icon" type="images/png" href="clapperboard.png">
-    <script type="module" src="js/movies.js"></script>
+    
+   
   
 </head>
 <body>
@@ -28,6 +29,7 @@
         </div>
     </div>
     <div class="main-content">
+    
      <button id="addButton">Add Movies</button>
 
         <div id ="movielist" class="movie">
@@ -35,10 +37,22 @@
                 <span class="close">&times;</span>
                 <h2>Select a Movie</h2>
                 <div class="search-container">
-                    <input type = "text" placeholder="Search...">
-                    <button type="submit">Search</button>
+                    <input type = "text" id ="searchInput" placeholder="Search...">
+                    <button type="submit" id ="search">Search</button>
+                    
+                    
+                <div id="imageContainer">
+                    <div class="movies"></div>
+                    <script src="js/searchmovie.js"></script>
+
+
+
+
                 </div>
-                <p>Movies</p>
+
+                <!--<script type="module" src="js/posterlayout.js"></script>-->
+               
+                </div>
             </div>
         </div>
 
@@ -50,7 +64,7 @@
             
             </div>
         </div>
-        <script src="js/searchmovie.js"></script>
+        
 
         <script>
          
@@ -86,6 +100,7 @@
   
         </script>
     </div>
-    
+    <script type="module" src="js/movies.js"></script>
 </body>
+
 </html>
