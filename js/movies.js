@@ -23,8 +23,8 @@ fetch(url, options)
 			const name = movie.Title;
 			const year = movie.Year;
 			const poster = movie.Poster;
-			//const moviecard = '<li><img src="${poster}" alt="${name}"><h3>${name}</h3><p>${year}</p></li>';
-			var moviecard = '<img src="' + poster + '"> ' +'<h2>' + name + '</h2>';
+			var moviecard = `<li><img src="${poster}" <h2>${name}</h2></li>`;
+			//var moviecard = '<li><img src="' + poster + '"> ' +'<h2>' + name + '</h2></li>';
 			document.querySelector('.movies').innerHTML += moviecard;
 		})
 	})
