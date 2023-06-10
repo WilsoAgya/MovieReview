@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/moviesearch.css">
     <link rel="shortcut icon" type="images/png" href="clapperboard.png">
-    
+    <script type="module" src="js/movies.js"></script>
+    <script type = "module" src="js/searchmovie.js"></script>
    
   
 </head>
@@ -37,11 +38,8 @@
                 <span class="close">&times;</span>
                 <h2>Select a Movie</h2>
              
-                <div class="search-container">
-                    
-                    
-                
-                    <input type = "text" id ="searchInput" placeholder="Search...">
+                <div class="search-container">         
+                    <input type = "text"  placeholder="Search..." id ="searchInput" >
                     <button type="submit" id ="search">Search</button>
                    
                 </div>
@@ -49,9 +47,9 @@
                    
                     
                     
-                    <div id="imageContainer"></div>
+                    <!--<div id="imageContainer"></div>-->
                     <div class="movies"></div>   
-                        <script src="js/searchmovie.js"></script>
+                        <script src="js/moviebox.js"></script>
 
                     
                 </div>    
@@ -99,7 +97,7 @@
   
         </script>
     </div>
-    <script type="module" src="js/movies.js"></script>
+    
 
     
 </body>

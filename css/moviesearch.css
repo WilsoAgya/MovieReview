@@ -30,6 +30,10 @@ button[type="submit"]{
 
 }
 
+.movie-item{
+    border:2px solid black;
+}
+
 .movies li{
     border:2px solid blue;
     flex:1;
