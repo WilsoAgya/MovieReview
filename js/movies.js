@@ -16,7 +16,7 @@ const options = {
 //----------------------------------------
 
 const movieSearch = document.getElementById('searchInput');
-
+var movieList = document.querySelector(".movies");
 
 async function loadMovies(searchTerm){
 	const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=32e4ee32`;
@@ -30,7 +30,7 @@ async function loadMovies(searchTerm){
 function findMovies(){
 	let searchTerm = (movieSearch.value).trim();
 	//if(searchTerm.length > 0){
-		console.log(searchTerm);
+		loadMovies(searchTerm);
 	//}
 	
 }
@@ -39,9 +39,28 @@ movieSearch.addEventListener('keyup',findMovies);
 
 
 function displayMovieList(movies){
+	searchInput.innerHTML = "";
 	for(let a = 0; a < movies.length; a++){
-		let movieListItem = docuemnt.createElement('div');
+		let movieListItem = document.createElement('div');
+		movieListItem.dataset.id = movies[a].imbdID;
+		movieListItem.classList.add('movie');
+		let moviePoster;
+		if(movies[a].Poster !== "N/A" )
+		    moviePoster = movies[a].Poster;
+		else
+			moviePoster = "Movie not found";
 		console.log(movieListItem);
+		movieListItem.innerHTML=`
+		<div class = "movie-thumbnail">
+		   <img src = "${moviePoster}">
+		</div>
+		<div class = "movie-info">
+		   <h3>${movies[a].Title}</h3>
+		   <p>${movies[a].Year}</p>
+		</div>
+		`;
+		//movieList.appendChild(movieListItem);
+		document.querySelector('.movie-thumbnail').innerHTML += movieListItem.innerHTML;
 	}
 
 	
