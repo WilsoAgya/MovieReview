@@ -53,12 +53,12 @@ function displayMovieList(movies){
 		if(movies[a].Poster != "N/A" )
 		    moviePoster = movies[a].Poster;
 		else
-		moviePoster = `
-		<div class="unknown-img">
+		moviePoster.innerHTML = "Movie Not found";
+	    
+
+	  /*<div class="unknown-img">
 		  <img src="clapperboard.png" alt="Unknown Image">
-		</div>
-	  `;
-	  
+		</div>*/
 		console.log(movieListItem);
 		movieListItem.innerHTML=`
 		<div class="movie-thumbnail">
