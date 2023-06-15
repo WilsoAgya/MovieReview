@@ -16,51 +16,63 @@ const options = {
 //----------------------------------------
 
 const movieSearch = document.getElementById('searchInput');
-var movieList = document.querySelector(".movies");
+//const movieList = document.getElementById('movie-container');
+//const movieList = document.querySelector('.movie-container');
+const MovieListBox = document.getElementById('movie-container');
 
 async function loadMovies(searchTerm){
 	const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=32e4ee32`;
 	const res = await fetch(`${URL}`);
 	const data = await res.json();
-	//console.log(data.Search);
+	console.log(data.Search);
 	if(data.Response == "True") displayMovieList(data.Search);
 
 }
 
 function findMovies(){
 	let searchTerm = (movieSearch.value).trim();
-	//if(searchTerm.length > 0){
+	if(searchTerm.length > 0){
+		MovieListBox.classList.remove('hide-search-list');
 		loadMovies(searchTerm);
-	//}
-	
+	}
+	else{
+		MovieListBox.classList.add('hide-search-list');
+	}
 }
 
 movieSearch.addEventListener('keyup',findMovies);
 
 
 function displayMovieList(movies){
-	searchInput.innerHTML = "";
+    MovieListBox.innerHTML = "";
 	for(let a = 0; a < movies.length; a++){
 		let movieListItem = document.createElement('div');
-		movieListItem.dataset.id = movies[a].imbdID;
-		movieListItem.classList.add('movie');
-		let moviePoster;
-		if(movies[a].Poster !== "N/A" )
+		movieListItem.dataset.id = movies[a].imdbID;
+		movieListItem.classList.add('movie-thumbnail');
+	    let moviePoster;
+		if(movies[a].Poster != "N/A" )
 		    moviePoster = movies[a].Poster;
 		else
-			moviePoster = "Movie not found";
+		moviePoster = `
+		<div class="unknown-img">
+		  <img src="clapperboard.png" alt="Unknown Image">
+		</div>
+	  `;
+	  
 		console.log(movieListItem);
 		movieListItem.innerHTML=`
-		<div class = "movie-thumbnail">
-		   <img src = "${moviePoster}">
+		<div class="movie-thumbnail">
+			<img src="${moviePoster}">
 		</div>
-		<div class = "movie-info">
-		   <h3>${movies[a].Title}</h3>
-		   <p>${movies[a].Year}</p>
+		<div class="movie-item-info">
+		     <h3>${movies[a].Title}</h3>
+			 <p>${movies[a].Year}</p>
 		</div>
+	
 		`;
-		//movieList.appendChild(movieListItem);
-		document.querySelector('.movie-thumbnail').innerHTML += movieListItem.innerHTML;
+		MovieListBox.appendChild(movieListItem);
+		//document.querySelector('.movie-thumbnail').innerHTML += movieListItem.innerHTML;	
+		//<div class = "movie-thumbnail">	
 	}
 
 	
