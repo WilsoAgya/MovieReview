@@ -11,6 +11,7 @@ input[type="text"]{
 
 }
 
+
 button[type="submit"]{
     padding:8px 16px;
     background-color:lightgreen;
@@ -27,7 +28,6 @@ button[type="submit"]{
     justify-content:center;
     align-items:center;
     gap:10px;
-
 }
 
 .movie-item{
@@ -55,26 +55,21 @@ button[type="submit"]{
 }
 
 #movielistbox{
-    background-color: #fefefe;
+    background-color: lightblue;
     margin: 15% auto;
-    
     padding:20px;
-    border:1px solid #888;
     width:60%;
 }
 
 
 
-#movie-container{
-    border:1px gray;
+
+.movie-container{
+    border:2px solid green;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     align-items:center;
-    gap:10px;
-
-    
-
 }
 
 .movie{
@@ -117,6 +112,10 @@ button[type="submit"]{
     border-radius:12px;
 }
 
+.movie-thumbnail:hover{
+    color:#888;
+}
+
 .unknown-img{
     border:2px solid green;
     flex:1;
@@ -139,4 +138,26 @@ button[type="submit"]{
 
 .hide-search-list{
     display:none;
+}
+
+
+.reviewlistbox{
+    background-color: lightblue;
+    transform:translate(-50%,-50%);
+    margin: 15% auto;
+    display:none;
+    position:fixed;
+    z-index:1;
+    left:50%;
+    top:50%;
+    width:60%;
+    max-width:600px;
+    height: 100%;
+    overflow:auto;
+    padding:20px;
+
+    width:60%;
+
+
+
 }

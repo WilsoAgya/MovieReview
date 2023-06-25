@@ -42,10 +42,14 @@ body{
 }*/
 
 #addButton{
-    background-image:url("add.png");
+    
     width:150px;
     height:200px;
     margin:14px;
+}
+
+#addButton:hover{
+    color:blueviolet;
 }
 
 .movieslot{

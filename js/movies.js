@@ -1,24 +1,11 @@
-import {apiKey} from './config.js';
 
-/*
-async function myFunction(){
-
-const url = 'https://online-movie-database.p.rapidapi.com/auto-complete?q=Spongebob';
-
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key' : apiKey,
-		'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
-	}
-};
-*/
-//----------------------------------------
 
 const movieSearch = document.getElementById('searchInput');
-//const movieList = document.getElementById('movie-container');
-//const movieList = document.querySelector('.movie-container');
-const MovieListBox = document.getElementById('movie-container');
+const MovieListBox = document.getElementById('movielistbox');
+const ReviewListBox = document.querySelectorAll('reviewlistbox');
+const MovieContainer = document.getElementById('movie-container');
+const movieThumbnails = document.querySelectorAll(".movie-thumbnail");
+
 
 async function loadMovies(searchTerm){
 	const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=32e4ee32`;
@@ -32,11 +19,11 @@ async function loadMovies(searchTerm){
 function findMovies(){
 	let searchTerm = (movieSearch.value).trim();
 	if(searchTerm.length > 0){
-		MovieListBox.classList.remove('hide-search-list');
+		MovieContainer.classList.remove('hide-search-list');
 		loadMovies(searchTerm);
 	}
 	else{
-		MovieListBox.classList.add('hide-search-list');
+		MovieContainer.classList.add('hide-search-list');
 	}
 }
 
@@ -44,21 +31,18 @@ movieSearch.addEventListener('keyup',findMovies);
 
 
 function displayMovieList(movies){
-    MovieListBox.innerHTML = "";
+	let moviePoster;
+    MovieContainer.innerHTML = "";
 	for(let a = 0; a < movies.length; a++){
 		let movieListItem = document.createElement('div');
 		movieListItem.dataset.id = movies[a].imdbID;
 		movieListItem.classList.add('movie-thumbnail');
-	    let moviePoster;
+
 		if(movies[a].Poster != "N/A" )
 		    moviePoster = movies[a].Poster;
 		else
-		moviePoster.innerHTML = "Movie Not found";
-	    
-
-	  /*<div class="unknown-img">
-		  <img src="clapperboard.png" alt="Unknown Image">
-		</div>*/
+		moviePoster = movies[a].Poster;
+		//moviePoster.innerHTML = "Movie Not found";
 		console.log(movieListItem);
 		movieListItem.innerHTML=`
 		<div class="movie-thumbnail">
@@ -70,52 +54,86 @@ function displayMovieList(movies){
 		</div>
 	
 		`;
-		MovieListBox.appendChild(movieListItem);
-		//document.querySelector('.movie-thumbnail').innerHTML += movieListItem.innerHTML;	
-		//<div class = "movie-thumbnail">	
-	}
-
+		MovieContainer.appendChild(movieListItem);
 	
+	
+	}
+	openReview();
+
+}
+
+function openReview(){
+document.querySelectorAll('.movie-container').forEach(image => {
+	image.onclick = () =>{
+		document.querySelector('.reviewlistbox').style.display = 'block';
+		document.querySelector('.movielistbox').style.display='none';
+	}
+});
+document.querySelector('.reviewlistbox .close').addEventListener("click", function() {
+    document.querySelector('.reviewlistbox').style.display = "none";
+	document.querySelector('.movie-container').style.diplay = 'block';
+  });
+
 }
 
 
 
 
-/*fetch(url, options)
-	.then(response => response.json())
-	.then(response => {
-		const movies = response.Search;
-		movies.map(movie =>{
-			//console.log(movie.Title);
-			const name = movie.l;
-			const year = movie.Year;
-			const poster = movie.imageUrl;
-			var moviecard = `<li><img src="${poster}" <h2>${name}</h2></li>`;
-			//var moviecard = '<li><img src="' + poster + '"> ' +'<h2>' + name + '</h2></li>';
-			document.querySelector('.movies').innerHTML += moviecard;
-		})
-	})
+/*var modal = document.getElementById("reviewlistbox");
+var modalImage = document.getElementById("modalImage");
+var thumbnails = document.getElementsByClassName("movie-thumbnail");
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
+function openReview(){
+	for(var i = 0; i<thumbnails.length; i++) {
+	thumbnails[i].onclick = function() {
+		var movieThumbnail = this.querySelector('img');
+		modalImage.src = movieThumbnail.src;
+		modal.style.display="block";
+	};
 }
-
-
-}
-
-myFunction();
-
-
-async function loadMovies(searchTerm){
-	const URL = `https://movie-database-alternative.p.rapid.api.com/?s=${searchTerm}`
 }
 
 
 */
+
+
+/*movieThumbnails.forEach((thumbnail) => {
+		thumbnail.addEventListener('click',function(){
+			const moviePoster = event.currentTarget.querySelector('img').src;
+			openReview(moviePoster);
+			});
+		});*/
+
+
+
+
+/*function movieaddlist(){
+	const movieThumbnails = document.querySelectorAll(".movie-thumbnail");
+
+	movieThumbnails.forEach((thumbnail) => {
+		thumbnail.addEventListener('click',function(){
+			const reviewscreen = document.getElementById("movie-container");
+			reviewscreen.style.display = "block";
+		});
+	});
+	
+}*/
+
+
+	
+	
+	
+	/*var addButton = document.getElementById('addButton');
+            var container = document.getElementById('container');
+            addButton.addEventListener('click', function() {
+                var newFrame = document.createElement('button');
+                newFrame.className='movieslot';
+                newFrame.classList.add('button');
+                newFrame.textContent="Movie";
+                container.appendChild(newFrame);*/
+
+
+
 
 
 

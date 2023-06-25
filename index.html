@@ -7,6 +7,7 @@
     <title>MovieReview - Home</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/moviesearch.css">
+    <link rel="stylesheet" href="css/review.css">
     <link rel="shortcut icon" type="images/png" href="clapperboard.png">
     <script type="module" src="js/movies.js"></script>
     <script type = "module" src="js/searchmovie.js"></script>
@@ -34,11 +35,11 @@
      <button id="addButton">Add Movies</button>
 
                 <div id="movielist" class="movie">
-                    <div id="movielistbox">
+                    <div id="movielistbox" class="movielistbox">
                       <span class="close">&times;</span>
                       <h2>Select a Movie</h2>     
                       <div class="search-container">         
-                        <input type="text" placeholder="Search..." id="searchInput" id = >
+                        <input type="text" placeholder="Search..." id="searchInput">
                         <!--<button type="submit" id="search">Search</button>-->
                         </div>
                       
@@ -51,15 +52,18 @@
                       <script src="js/moviebox.js"></script>
                     </div>
                     </div>
-                    
-                    
-                    
                 </div>
-            
-                  
-                  
+        
+   
+                <div id = "reviewlist">
+                    <div class="reviewlistbox">
+                        <span class="close">&times;</span>
+                        <p>This is the Review modal</p>
+                    </div>
+                </div>  
 
-        <div id="buttoncontainer"></div>
+                
+       
         <div id="container"></div>
         </div>
         
@@ -70,13 +74,11 @@
          
           
             var addButton = document.getElementById('addButton');
-
             var container = document.getElementById('container');
-
             addButton.addEventListener('click', function() {
                 var newFrame = document.createElement('button');
                 newFrame.className='movieslot';
-                newFrame.classList.add('button');
+                newFrame.classList.add('movie-thumbnail');
                 newFrame.textContent="Movie";
                 container.appendChild(newFrame);
 

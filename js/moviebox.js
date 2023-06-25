@@ -1,15 +1,34 @@
 
-//Event listener is implemented so that when the addButton is clicked the modal is set to display block
+const movieSearch = document.getElementById('searchInput');
+const MovieListBox = document.getElementById('movielistbox');
+const ReviewListBox = document.getElementById('reviewlistbox');
+const MovieContainer = document.getElementById('movie-container');
+const movieThumbnails = document.querySelectorAll(".movie-thumbnail");
 
-document.getElementById("addButton").addEventListener("click", function() {
+
+
+let Clicker = 0;
+function handleClick(){
+	Clicker++;
+}
+
+//Event listener is implemented so that when the addButton is clicked the modal is set to display block
+const AddButton = document.getElementById("addButton").addEventListener("click", function() {
     document.getElementById("movielist").style.display = "block";
+	Clicker++;
   });
+
+
 
 //Event lister for closing the window when the 'close' class is clicked on.  [0] is implemented so that the webpage remains the same
 //When the close button is clicked movielist is dispalyed as none
   
-  document.getElementsByClassName("close")[0].addEventListener("click", function() {
+  /*document.getElementsByClassName("close")[0].addEventListener("click", function() {
     document.getElementById("movielist").style.display = "none";
+  });*/
+
+  document.querySelector('.movielistbox .close').addEventListener('click', function() {
+    document.querySelector('.movielistbox').style.display = 'none';
   });
 
 //If user clicks outside of modal the modal closes
@@ -33,9 +52,19 @@ document.getElementById("addButton").addEventListener("click", function() {
   
   //-------------------------------
 
-  
+  /*function openReview(){
+	ReviewListBox.style.display='block';
+	
+}
+
+MovieContainer.addEventListener("click", function(event) {
+	if(event.target.classList.contains("movie-thumbnail")){
+		openReview();
+	}
+});
 
 
-
-
-
+document.ElementbyClassName(".movie-container").addEventListener("click", function() {
+  document.getElementById("reviewlistbox").style.display = "block";
+})
+*/
