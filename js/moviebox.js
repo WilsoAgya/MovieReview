@@ -15,7 +15,7 @@ function handleClick(){
 //Event listener is implemented so that when the addButton is clicked the modal is set to display block
 const AddButton = document.getElementById("addButton").addEventListener("click", function() {
     document.getElementById("movielist").style.display = "block";
-	Clicker++;
+
   });
 
 
