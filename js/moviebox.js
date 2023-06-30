@@ -20,12 +20,8 @@ const AddButton = document.getElementById("addButton").addEventListener("click",
 
 
 
-//Event lister for closing the window when the 'close' class is clicked on.  [0] is implemented so that the webpage remains the same
-//When the close button is clicked movielist is dispalyed as none
-  
-  /*document.getElementsByClassName("close")[0].addEventListener("click", function() {
-    document.getElementById("movielist").style.display = "none";
-  });*/
+//Event lister for closing the window when the 'close' class is clicked on. 
+
 
   document.querySelector('.movielistbox .close').addEventListener('click', function() {
     document.querySelector('.movielistbox').style.display = 'none';
@@ -47,7 +43,7 @@ const AddButton = document.getElementById("addButton").addEventListener("click",
       var addButton = document.createElement("button");
       document.getElementById("buttoncontainer").appendChild(addButton);
     });
-    document.getElementById("buttoncontainer").appendChild(newButton);
+    //document.getElementById("buttoncontainer").appendChild(newButton);
   });
   
   //-------------------------------

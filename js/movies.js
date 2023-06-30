@@ -2,9 +2,9 @@
 
 const movieSearch = document.getElementById('searchInput');
 const MovieListBox = document.getElementById('movielistbox');
-const ReviewListBox = document.querySelectorAll('reviewlistbox');
+const ReviewListBox = document.querySelectorAll('.reviewlistbox');
 const MovieContainer = document.getElementById('movie-container');
-const movieThumbnails = document.querySelectorAll(".movie-thumbnail");
+
 
 
 async function loadMovies(searchTerm){
@@ -62,75 +62,24 @@ function displayMovieList(movies){
 
 }
 
+
 function openReview(){
-document.querySelectorAll('.movie-container').forEach(image => {
+
+document.querySelectorAll('.movie-thumbnail').forEach(image => {
 	image.onclick = () =>{
-		document.querySelector('.reviewlistbox').style.display = 'block';
+		document.querySelector('.reviewlist').style.display = 'block';
 		document.querySelector('.movielistbox').style.display='none';
 	}
 });
 document.querySelector('.reviewlistbox .close').addEventListener("click", function() {
-    document.querySelector('.reviewlistbox').style.display = "none";
-	document.querySelector('.movie-container').style.diplay = 'block';
+    document.querySelector('.reviewlist').style.display = "none";
+	document.querySelector('.movielistbox').style.display = 'block';
   });
 
+
 }
 
 
-
-
-/*var modal = document.getElementById("reviewlistbox");
-var modalImage = document.getElementById("modalImage");
-var thumbnails = document.getElementsByClassName("movie-thumbnail");
-
-function openReview(){
-	for(var i = 0; i<thumbnails.length; i++) {
-	thumbnails[i].onclick = function() {
-		var movieThumbnail = this.querySelector('img');
-		modalImage.src = movieThumbnail.src;
-		modal.style.display="block";
-	};
-}
-}
-
-
-*/
-
-
-/*movieThumbnails.forEach((thumbnail) => {
-		thumbnail.addEventListener('click',function(){
-			const moviePoster = event.currentTarget.querySelector('img').src;
-			openReview(moviePoster);
-			});
-		});*/
-
-
-
-
-/*function movieaddlist(){
-	const movieThumbnails = document.querySelectorAll(".movie-thumbnail");
-
-	movieThumbnails.forEach((thumbnail) => {
-		thumbnail.addEventListener('click',function(){
-			const reviewscreen = document.getElementById("movie-container");
-			reviewscreen.style.display = "block";
-		});
-	});
-	
-}*/
-
-
-	
-	
-	
-	/*var addButton = document.getElementById('addButton');
-            var container = document.getElementById('container');
-            addButton.addEventListener('click', function() {
-                var newFrame = document.createElement('button');
-                newFrame.className='movieslot';
-                newFrame.classList.add('button');
-                newFrame.textContent="Movie";
-                container.appendChild(newFrame);*/
 
 
 
