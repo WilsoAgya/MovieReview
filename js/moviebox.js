@@ -25,6 +25,7 @@ const AddButton = document.getElementById("addButton").addEventListener("click",
 
   document.querySelector('.movielistbox .close').addEventListener('click', function() {
     document.querySelector('.movielistbox').style.display = 'none';
+    document.getElementById('movielist').style.display= "none";
   });
 
 //If user clicks outside of modal the modal closes
@@ -45,6 +46,24 @@ const AddButton = document.getElementById("addButton").addEventListener("click",
     });
     //document.getElementById("buttoncontainer").appendChild(newButton);
   });
+
+  
+document.querySelectorAll('.movie-thumbnail').forEach(image => {
+	image.onclick = () =>{
+		document.querySelector('.reviewlist').style.display = 'block';
+		document.querySelector('.movielistbox').style.display='none';
+	}
+});
+document.querySelector('.reviewlistbox .close').addEventListener("click", function() {
+    document.querySelector('.reviewlist').style.display = "none";
+	document.querySelector('.movielistbox').style.display = 'block';
+  });
+
+
+
+
+
+
   
   //-------------------------------
 

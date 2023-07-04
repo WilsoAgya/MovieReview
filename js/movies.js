@@ -64,6 +64,8 @@ function displayMovieList(movies){
 
 
 function openReview(){
+	
+
 
 document.querySelectorAll('.movie-thumbnail').forEach(image => {
 	image.onclick = () =>{
@@ -75,6 +77,8 @@ document.querySelector('.reviewlistbox .close').addEventListener("click", functi
     document.querySelector('.reviewlist').style.display = "none";
 	document.querySelector('.movielistbox').style.display = 'block';
   });
+
+
 
 
 }
