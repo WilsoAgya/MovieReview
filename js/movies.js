@@ -59,14 +59,12 @@ function displayMovieList(movies){
 	
 	}
 	openReview();
+	loadMovieDetails();
 
 }
 
 
 function openReview(){
-	
-
-
 document.querySelectorAll('.movie-thumbnail').forEach(image => {
 	image.onclick = () =>{
 		document.querySelector('.reviewlist').style.display = 'block';
@@ -77,13 +75,26 @@ document.querySelector('.reviewlistbox .close').addEventListener("click", functi
     document.querySelector('.reviewlist').style.display = "none";
 	document.querySelector('.movielistbox').style.display = 'block';
   });
-
-
-
-
 }
 
+function loadMovieDetails(){
+	const searchListMovies = MovieContainer.querySelectorAll('.movie-thumbnail');
+	searchListMovies.forEach(movie => {
+		movie.addEventListener('click',async() => {
+			//console.log(movie.dataset.id);
+			movieSearch.value ="";
+			const result = await fetch(`https://omdbapi.com/?s=${movie.dataset.id}&page=1&apikey=32e4ee32`);
+			const movieSummary = await result.json();
+			displayMovieDetails(movieSummary);
+		});
+	});
+}
 
+/*function displayMovieDetails(summary){
+	ReviewListBox.innerHTML=`
+	`
+}
+*/
 
 
 
