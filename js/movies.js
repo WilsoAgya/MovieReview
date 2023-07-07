@@ -2,7 +2,7 @@
 
 const movieSearch = document.getElementById('searchInput');
 const MovieListBox = document.getElementById('movielistbox');
-const ReviewListBox = document.querySelectorAll('.reviewlistbox');
+const ReviewListBox = document.querySelector('.reviewlistbox');
 const MovieContainer = document.getElementById('movie-container');
 
 
@@ -83,18 +83,22 @@ function loadMovieDetails(){
 		movie.addEventListener('click',async() => {
 			//console.log(movie.dataset.id);
 			movieSearch.value ="";
-			const result = await fetch(`https://omdbapi.com/?s=${movie.dataset.id}&page=1&apikey=32e4ee32`);
+			const imdbID = movie.dataset.id;
+			const result = await fetch(`https://omdbapi.com/?i=${imdbID}&apikey=32e4ee32`);
 			const movieSummary = await result.json();
 			displayMovieDetails(movieSummary);
 		});
 	});
 }
 
-/*function displayMovieDetails(summary){
+function displayMovieDetails(summary){
+	console.log(summary);
 	ReviewListBox.innerHTML=`
-	`
+	<div class = "reviewimage">
+		<img src = "${summary.Poster}" alt = "Movie Poster">
+	</div>
+	`;
 }
-*/
 
 
 
